@@ -6,5 +6,6 @@ alurnya :
 - python backend.py
 - python frontend.py
 - python stok_barang.py
-- python reporting.py 
+- python reporting.py
+  
 jalanin di terminal, yang bedaaa, bukan di RUN.
