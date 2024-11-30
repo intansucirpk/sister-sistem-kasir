@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+service Frontend {
+    rpc InputTransaction(Transaction) returns (Response);
+}
+
+service Backend {
+    rpc ProcessTransaction(Transaction) returns (Response);
+}
+
+service StokBarang {
+    rpc UpdateStock(StockRequest) returns (Response);
+}
+
+service Reporting {
+    rpc GenerateReport(ReportRequest) returns (Report);
+}
+
+message Transaction {
+    string retailer = 1;
+    int32 retailer_id = 2;
+    string invoice_date = 3;
+    string region = 4;
+    string state = 5;
+    string city = 6;
+    string product = 7;
+    double price_per_unit = 8;
+    int32 units_sold = 9;
+    double total_sales = 10;
+    double operating_profit = 11;
+    string sales_method = 12;
+}
+
+message StockRequest {
+    string product = 1;
+    int32 units_sold = 2;
+}
+
+message ReportRequest {
+    string type = 1; // "daily" or "weekly"
+}
+
+message Report {
+    string content = 1;
+}
+
+message Response {
+    string status = 1;
+    string message = 2;
+}
