@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Transaksi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #007BFF;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            border-color: #007BFF;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            font-size: 16px;
+            color: #0069d9;
+            border: 1px solid #0069d9;
+            background-color: #eaf4ff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .pagination {
+            justify-content: center;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hasil Laporan Transaksi</h1>
+        {% if laporan %}
+            <ul>
+                {% for item in laporan %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert">
+                <p>Tidak ada laporan untuk periode yang dipilih.</p>
+            </div>
+        {% endif %}
+
+        <br>
+        <!-- Pagination -->
+        <div class="pagination">
+            <ul class="pagination">
+                <!-- Previous Button -->
+                {% if current_page > 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('hasil_laporan', periode=periode, page=current_page - 1) }}">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                {% endif %}
+
+                <!-- Page Number Buttons -->
+                {% for page_num in range(1, total_pages + 1) %}
+                    <li class="page-item {% if page_num == current_page %}active{% endif %}">
+                        <a class="page-link" href="{{ url_for('hasil_laporan', periode=periode, page=page_num) }}">{{ page_num }}</a>
+                    </li>
+                {% endfor %}
+
+                <!-- Next Button -->
+                {% if current_page < total_pages %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('hasil_laporan', periode=periode, page=current_page + 1) }}">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Next</span>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% if not laporan %}
+            <div class="alert">
+                <p>Tidak ada laporan untuk periode yang dipilih.</p>
+            </div>
+        {% endif %} 
+        <br>
+        <a href="/" class="btn-back">Kembali</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
