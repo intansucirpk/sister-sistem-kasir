@@ -1,0 +1,55 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Stok Barang</title>
+</head>
+<body>
+    <h1>Tambah Stok Barang</h1>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if message %}
+    <p style="color: green;">{{ message }}</p>
+    {% endif %}
+    <form method="POST">
+        <label for="id_barang">ID Barang:</label>
+        <input type="number" id="id_barang" name="id_barang" required>
+        <br>
+        <label for="jumlah_tambah">Jumlah Tambah:</label>
+        <input type="number" id="jumlah_tambah" name="jumlah_tambah" required>
+        <br>
+        <button type="submit">Tambah Stok</button>
+    </form>
+    <a href="/">Kembali ke Beranda</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Stok Barang</title>
+</head>
+<body>
+    <h1>Tambah Stok Barang</h1>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if message %}
+    <p style="color: green;">{{ message }}</p>
+    {% endif %}
+    <form method="post">
+        <label for="id_barang">ID Barang:</label>
+        <input type="number" id="id_barang" name="id_barang" required>
+        <br>
+        <label for="jumlah_tambah">Jumlah Tambah:</label>
+        <input type="number" id="jumlah_tambah" name="jumlah_tambah" required>
+        <br>
+        <button type="submit">Tambah Stok</button>
+    </form>
+    <a href="index.html">Kembali ke Beranda</a>
+</body>
+</html>
